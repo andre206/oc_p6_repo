@@ -1,0 +1,13 @@
+{
+  "name": "juststramit",
+  "version": "1.0.0",
+  "description": "Tu ne sais pas quoi regarder pour passer une bonne soirée ? Alors JustSteamIt",
+  "main": "index.js",
+  "scripts": {
+    "sass": "sass ./sass/main.scss:./public/css/style.css",
+    "prefix": "postcss ./public/css/style.css --use autoprefixer -d ./public/css/"
+  },
+  "author": "Létitia CARNICELLI",
+  "license": "ISC",
+  "browserslist":"last 4 versions"
+}
