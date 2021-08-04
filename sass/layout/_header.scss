@@ -1,7 +1,5 @@
 .header-main{
-    /*background-image: url("../../public/images/logo-juststreamit-petit.png");
-    background-repeat: no-repeat;
-    background-position: top left;*/
+
     width: 95%;
     height: 100%;
     margin:2% 2% 2% 2%;
@@ -9,9 +7,9 @@
     display: flex;
     flex-direction: row;
 
-    border: 2px solid grey;
+    border: $border;
     box-shadow: black 2px;
-
+    background-color: grey;
     
 }
 
