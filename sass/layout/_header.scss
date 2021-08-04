@@ -1,20 +1,50 @@
 .header-main{
-    width: 60%;
-    height: 25%;
-    margin:auto;
-    margin-top: 2%;
-    padding-left: 1%;
-    padding-bottom: 1%;
-    display: block;
+    /*background-image: url("../../public/images/logo-juststreamit-petit.png");
+    background-repeat: no-repeat;
+    background-position: top left;*/
+    width: 95%;
+    height: 100%;
+    margin:2% 2% 2% 2%;
+    padding: 1% 1% 1% 1%;
+    display: flex;
     flex-direction: row;
+
+    border: 2px solid grey;
+    box-shadow: black 2px;
+
+    
 }
 
-.logo-heading{
-    border-radius: 10px/20px;
+.float{
     float: left;
 }
+.stop_float{
+    float:none;
+}
 
-nav li{
-    list-style: none;
-    display: inline;
+.slogan{
+    display:flex;
+    align-content:space-around;
+    align-items: flex-end;
+    justify-content: center;
+    width: 70%;
+    height: 100px;
+    font-family: 'ArimaKoshi';
+    font-size: medium;
+    font-style: italic;
+}
+
+nav{
+    
+    position:absolute;
+    right: 2%;
+    padding-right: 2%;
+    
+    & li{
+        list-style: none;
+        display: inline;
+        font-family: 'ArimaKoshi';
+        font-size: large;
+        text-align: right;
+    }
 }

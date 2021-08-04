@@ -1,8 +1,6 @@
 @font-face {
-    font-family: "Arizona";
-    src: url(../../public/fonts/Arizonia-Regular.ttf);
+    font-family: "ArimaKoshi";
+    src: url('../../public/fonts/Arima/ArimaKoshi-Medium.otf')
 }
-@font-face {
-    font-family: "Mutlu";
-    src: url(../../public/fonts/Mutlu__Ornamental.ttf)
-}
+
+$text-shadow:rgb(112, 49, 49) 2px 2px;

@@ -1,5 +1,5 @@
 {
-  "name": "juststramit",
+  "name": "juststreamit",
   "version": "1.0.0",
   "description": "Tu ne sais pas quoi regarder pour passer une bonne soirée ? Alors JustSteamIt",
   "main": "index.js",
@@ -9,5 +9,13 @@
   },
   "author": "Létitia CARNICELLI",
   "license": "ISC",
-  "browserslist":"last 4 versions"
+  "browserslist": "last 4 versions",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/maticha84/oc_p6_repo.git"
+  },
+  "bugs": {
+    "url": "https://github.com/maticha84/oc_p6_repo/issues"
+  },
+  "homepage": "https://github.com/maticha84/oc_p6_repo#readme"
 }
