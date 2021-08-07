@@ -1,0 +1,43 @@
+.caroussel {
+    position: relative;
+    overflow: hidden;
+    &__item{
+        float:left;
+
+    }
+    &__container{
+        transition: transform 0.3s;
+        transform: translate3d(0, 0, 0);
+        &::after{
+        content: '';
+        clear: both;
+        display: table;
+        }
+    }
+    &__next,  &__prev{
+        position: absolute;
+        width:40px;
+        height: 40px;
+        background: burlywood url(../../public/images/nav/next.svg) center center no-repeat;
+        background-size: 20px 20px;
+        border-radius: 50%;
+        top: 50%;
+        margin: -20px;
+        right: 10px;
+        box-shadow: 0 15px 35px #3232321a, 0 5px 15px #0000001a;
+        cursor: pointer;
+        transition: transform 0.3s, opacity 0.3s;
+        &:hover{
+            transform: scale(1.2)
+        }
+        &--hidden{
+            opacity: 0;
+        }
+    }
+    &__prev{
+        background-image: url(../../public/images/nav/prev.svg);
+        right: auto;
+        left: 10px;
+    }
+
+}
