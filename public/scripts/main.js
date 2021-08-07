@@ -40,8 +40,6 @@ class Caroussel {
         this.createNavigation()
         // Evenement
         this.moveCallBacks.forEach(cb => cb(0))
-        this.onWindowResize()
-        window.addEventListener('resize', this.onWindowResize.bind(this))
     }  
 
     /**
@@ -107,15 +105,6 @@ class Caroussel {
      */
     onMove (callBack) {
         this.moveCallBacks.push(callBack)
-    }
-    
-    onWindowResize() {
-        let mobile = window.innerWidth < 800
-        if(mobile !== this.isMobile) {
-            this.isMobile = mobile
-            this.setStyle()
-            this.moveCallBacks.forEach(cb => cb(this.currentItem))
-        }
     }
 
     /**
