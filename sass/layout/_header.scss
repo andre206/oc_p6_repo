@@ -9,7 +9,7 @@
 
     border: $border;
     box-shadow: black 2px;
-    background-color: grey;
+    background: $background-gradient;
     
 }
 
@@ -44,5 +44,11 @@ nav{
         font-family: 'ArimaKoshi';
         font-size: large;
         text-align: right;
+        & a{ 
+            color:$text-color;
+            &:hover{
+                color:lightcyan;
+            }
+        }
     }
 }

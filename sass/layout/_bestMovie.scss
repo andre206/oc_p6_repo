@@ -1,7 +1,53 @@
 #best-movie{
     
-    background: linear-gradient(to right,brown, black);
+    background: $background-gradient;
     height: 300px;
     padding: 10px 10px 10px 10px;
+    display: inline-block;
+    vertical-align: top;
+    
+    &__text{
+        float: left;
+        flex-direction: column;
+        width: 50%;
+        height: 280px;
+    }
+    &__title{
+        font-family: 'ArimaKoshi';
+        font-size: 40px;
+        font-weight: bold;
+        text-align: center;
+    }
 
+    &__img{
+        float: right;
+        position: relative;
+        right: 0px;
+    }
+
+    &--button{
+        text-align: center;
+        width: 20%;
+        height: 10%;
+        background: $background-gradient;
+        border-radius: 20% 10%;
+        border: 1px solid black;
+        box-shadow: grey 2px 2px;
+        position: relative;
+        left:30%;
+        top: 30%;
+        transition: transform 0.3s, opacity 0.3s;
+        cursor: pointer;
+        color: $text-color;
+        &:hover{
+            transform: scale(1.2);        
+        }
+        & a{
+            color: $text-color;
+            &:hover{
+                color:lightcyan;
+            }
+        }
+
+    }
 }

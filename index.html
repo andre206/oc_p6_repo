@@ -10,7 +10,7 @@
 	</head>
 	<body>
         <header class="header-main"> 
-            <img class="float" src="public/images/logo-juststreamit-petit.png" alt="logo" />
+            <img class="float" src="public/images/logo-juststreamit-petit.svg" alt="logo" />
             <h1 class="stop_float slogan" >Tu ne sais pas quoi regarder pour passer une bonne soirée ? Alors JustStreamIt.</h1>
             <nav>
                 <ul>
@@ -20,8 +20,11 @@
             </nav>
         </header>
         <section id="best-movie">
-            <div id="best-movie__title"></div>
-            <div id="best-movie__description"></div>
+            <div id="best-movie__text">
+                <div id="best-movie__title"></div>
+                <div id="best-movie__description"></div>
+                <button id="best-movie--button"><a href="#movie-informations">Infos Film</a></button>
+            </div>
         </section>
         <section>
             <!--Films les mieux noté-->
@@ -78,6 +81,24 @@
         <section> 
             Catégorie 3
         </section>
+
+        <div id="movie-informations"class="modal">
+            <div class="modal-dialog">
+              <div class="modal-content">
+                <header class="contain"> 
+                  <a href="#" class="closebtn">×</a>
+                  <h2>Entête de modale</h2>
+                </header>
+                <div class="contain">
+                  <p>Texte dans la fenêtre modale.</p>  
+                </div>
+                <footer class="contain">
+                  <p>Pied de page de modale</p>
+                </footer>
+              </div>
+            </div>
+
+        </div>
 
 	</body>
 </html>

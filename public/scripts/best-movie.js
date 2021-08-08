@@ -3,21 +3,26 @@
 const bestMovie = async function() {
 
     let url = 'http://localhost:8000/api/v1/titles/'
-    await fetch(url+'?year=&min_year=&max_year=&imdb_score=&imdb_score_min=&imdb_score_max=&title=&title_contains=&genre=&genre_contains=&sort_by=-imdb_score%2C-votes&director=&director_contains=&writer=&writer_contains=&actor=&actor_contains=&country=&country_contains=&lang=&lang_contains=&company=&company_contains=&rating=&rating_contains=')
+    await fetch(url+'?sort_by=-imdb_score%2C-votes&page_size=12')
     
     .then(async function(res) {
         if (res.ok) {
             let data = await res.json()
+            console.log(data)
             return data
         }
     })
     .then(async function(value) {
         document.querySelector("#best-movie__title").innerHTML = value.results[0].title;
-
+        
         let bestMovieImg = document.createElement('img');
         bestMovieImg.src = value.results[0].image_url;
         bestMovieImg.alt = 'Best Movie Image';
-        document.querySelector("#best-movie").appendChild(bestMovieImg);
+        let bestMovieImgDiv = document.createElement('div');
+        bestMovieImgDiv.setAttribute('id', 'best-movie__img');
+
+        document.querySelector("#best-movie").appendChild(bestMovieImgDiv);
+        document.querySelector("#best-movie__img").appendChild(bestMovieImg);
 
         let idBestMovie = value.results[0].id;
 

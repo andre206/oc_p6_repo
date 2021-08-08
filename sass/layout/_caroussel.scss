@@ -16,13 +16,13 @@
     }
     &__next,  &__prev{
         position: absolute;
-        width:40px;
-        height: 40px;
-        background: burlywood url(../../public/images/nav/next.svg) center center no-repeat;
-        background-size: 20px 20px;
+        width:20px;
+        height: 20px;
+        background: grey url(../../public/images/nav/next.svg) center center no-repeat;
+        background-size: 15px 15px;
         border-radius: 50%;
         top: 50%;
-        margin: -20px;
+        margin: 0px;
         right: 10px;
         box-shadow: 0 15px 35px #3232321a, 0 5px 15px #0000001a;
         cursor: pointer;
