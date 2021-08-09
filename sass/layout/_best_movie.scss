@@ -9,7 +9,7 @@
     &__text{
         float: left;
         flex-direction: column;
-        width: 50%;
+        width: 65%;
         height: 280px;
     }
     &__title{
@@ -19,10 +19,21 @@
         text-align: center;
     }
 
+    &__description{
+        height: 180px;
+        overflow: scroll;
+        scrollbar-color: black grey;
+        scrollbar-width: thin;
+        border: 1px solid grey;
+        padding: 2px 2px 2px 2px ;
+        margin-left: 10px;
+    }
+
     &__img{
         float: right;
         position: relative;
-        right: 0px;
+        right:10%;
+        top: 5%;
     }
 
     &--button{
@@ -34,8 +45,8 @@
         border: 1px solid black;
         box-shadow: grey 2px 2px;
         position: relative;
-        left:30%;
-        top: 30%;
+        left:38%;
+        top: 5%;
         transition: transform 0.3s, opacity 0.3s;
         cursor: pointer;
         color: $text-color;

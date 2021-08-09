@@ -5,8 +5,8 @@
         <meta name="viewport" content="width=device-width, initial-scale=1">
         <link rel="stylesheet" href="./public/css/style.css">
 		<title>JustStreamIt </title>
-        <script type="text/javascript" src="./public/scripts/main.js" async></script>
-        <script type="text/javascript" src="public/scripts/best-movie.js" async></script>
+        <script type="text/javascript" src="./public/scripts/caroussel.js" async></script>
+        <script type="text/javascript" src="./public/scripts/best-movies.js" async></script>
 	</head>
 	<body>
         <header class="header-main"> 
@@ -26,34 +26,49 @@
                 <button id="best-movie--button"><a href="#movie-informations">Infos Film</a></button>
             </div>
         </section>
-        <section>
+        <section class="section" id="best-movies">
             <!--Films les mieux noté-->
-            
+            <div class="section__titre">Les 8 films les mieux notés actuellement</div>
             <div id="caroussel1">
                 <div class="item">
-                    <img src="public/images/test/15-07-21_mandarine.jpg" width=60% height=60%/>
-                    <h2> Mon titre 1</h2>
-                    <p>Une description pour voir</p>
+                    <div id="best-movies__img1"></div>
+                    <div id="best-movies__title1"></div>
+                    <div id="best-movies__score1"></div>
                 </div>
                 <div class="item">
-                    <img src="public/images/test/accord1.jpg" width=50% height=60%/>
-                    <h2> Mon titre 2</h2>
-                    <p>Une description pour voir</p>
+                    <div id="best-movies__img2"></div>
+                    <div id="best-movies__title2"></div>
+                    <div id="best-movies__score2"></div>
                 </div>
                 <div class="item">
-                    <img src="public/images/test/accord2.jpg" width=50% height=60%/>
-                    <h2> Mon titre 3</h2>
-                    <p>Une description pour voir</p>
+                    <div id="best-movies__img3"> </div>
+                    <div id="best-movies__title3"></div>
+                    <div id="best-movies__score3"></div>
                 </div>
                 <div class="item">
-                    <img src="public/images/test/image_maquillage_nude.jpg" width=80% height=60%/>
-                    <h2> Mon titre 4</h2>
-                    <p>Une description pour voir</p>
+                    <div id="best-movies__img4"></div>
+                    <div id="best-movies__title4"></div>
+                    <div id="best-movies__score4"></div>
                 </div>
                 <div class="item">
-                    <img src="public/images/test/pinup1.jpg" width=50% height=60%/>
-                    <h2> Mon titre 5</h2>
-                    <p>Une description pour voir</p>
+                    <div id="best-movies__img5"></div>
+                    <div id="best-movies__title5"></div>
+                    <div id="best-movies__score5"></div>
+                </div>
+                <div class="item">
+                    <div id="best-movies__img6"></div>
+                    <div id="best-movies__title6"></div>
+                    <div id="best-movies__score6"></div>
+                </div>
+                <div class="item">
+                    <div id="best-movies__img7"></div>
+                    <div id="best-movies__title7"></div>
+                    <div id="best-movies__score7"></div>
+                </div>
+                <div class="item">
+                    <div id="best-movies__img8"></div>
+                    <div id="best-movies__title8"></div>
+                    <div id="best-movies__score8"></div>
                 </div>
                 
             </div>
@@ -101,4 +116,7 @@
         </div>
 
 	</body>
+    <footer id='footer'>
+        JustStreamIt - Tous droits réservés - <a href="mailto:letitia@carnicelli.fr">contact </a>
+    </footer>
 </html>

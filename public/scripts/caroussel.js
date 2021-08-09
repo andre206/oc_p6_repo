@@ -138,8 +138,7 @@ class Caroussel {
 document.addEventListener('DOMContentLoaded', function() {
     
     new Caroussel(document.querySelector('#caroussel1'), {
-        slidesVisible: 3,
-        slidesToScroll: 2, 
+        slidesVisible: 4
     }
     );
     new Caroussel(document.querySelector('#caroussel2'), {
