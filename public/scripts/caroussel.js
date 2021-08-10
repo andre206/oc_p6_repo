@@ -137,17 +137,20 @@ class Caroussel {
 
 document.addEventListener('DOMContentLoaded', function() {
     
-    new Caroussel(document.querySelector('#caroussel1'), {
+    new Caroussel(document.querySelector('#caroussel__best-movies'), {
         slidesVisible: 4
     }
     );
-    new Caroussel(document.querySelector('#caroussel2'), {
-        slidesVisible: 2,
-        slidesToScroll: 2, 
-        loop: true
+    new Caroussel(document.querySelector('#caroussel__action'), {
+        slidesVisible: 4
     }
     );
-    new Caroussel(document.querySelector('#caroussel3'), {
+    new Caroussel(document.querySelector('#caroussel__fantasy'), {
+        slidesVisible: 4
+    }
+    );
+    new Caroussel(document.querySelector('#caroussel__sci-fi'), {
+        slidesVisible: 4
     }
     );
 })
