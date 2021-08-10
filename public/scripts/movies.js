@@ -13,6 +13,15 @@ class Movie {
         this.description = '';
         this.imageUrl = '';
         this.idMovie = 0;
+        this.genres = [];
+        this.date_published = 0;
+        this.rated = '';
+        this.imdb_score = 0;
+        this.directors = [];
+        this.actors = [];
+        this.duration = 0;
+        this.countries =[];
+        this.avg_score = 0;
 
     }
 }
@@ -43,6 +52,16 @@ const movieRecuperationInfos = async function(listMovieObject, categoriesSearch=
                     movie.imageUrl = data.image_url;
                     movie.description = data.long_description;
                     movie.title = data.title;
+                    movie.genres = data.genres;
+                    movie.date_published = data.date_published;
+                    movie.rated = data.rated;
+                    movie.imdb_score = data.imdb_score;
+                    movie.directors = data.directors;
+                    movie.actors = data.actors;
+                    movie.duration = data.duration;
+                    movie.countries = data.countries;
+                    movie.avg_score = data.avg_score;
+
                 }
             })
             .catch(function(err) {
@@ -204,34 +223,34 @@ const scifiMoviesObject = function() {
     return movies
 }
    
+
+// Création des objects Mouvie dans des listes par catégorie
 let categorieBestMovies = bestMoviesObject();
 let categorieActionMovies = actionMoviesObject();
 let categorieFantasyMovies = fantasyMoviesObject();
 let categorieScifiMovies = scifiMoviesObject();
 
+
+// Récupération des infos et incrémentation des objets par catégorie
+
 movieRecuperationInfos(categorieBestMovies, '?sort_by=-imdb_score%2C-votes&page_size=12');
+movieRecuperationInfos(categorieActionMovies, '?genre_contains=Action&sort_by=-imdb_score%2C-votes&page_size=12');
+movieRecuperationInfos(categorieFantasyMovies,'?genre_contains=Fantasy&sort_by=-imdb_score%2C-votes&page_size=12' );
+movieRecuperationInfos(categorieScifiMovies,'?genre_contains=Sci-Fi&sort_by=-imdb_score%2C-votes&page_size=12' )
+
 
 setTimeout(() => {
-    bestMovieHTML(categorieBestMovies[0])
+    bestMovieHTML(categorieBestMovies[0]);
+    bestMoviesHTML(categorieBestMovies);
+    actionMoviesHTML(categorieActionMovies);
+    fantasyMoviesHTML(categorieFantasyMovies);
+    scifiMoviesHTML(categorieScifiMovies)
 },700);
 
-setTimeout(() => {
-    bestMoviesHTML(categorieBestMovies)
-},700)
-
-movieRecuperationInfos(categorieActionMovies, '?genre_contains=Action&sort_by=-imdb_score%2C-votes&page_size=12');
-setTimeout(() => {
-    actionMoviesHTML(categorieActionMovies)
-},700)
-
-movieRecuperationInfos(categorieFantasyMovies,'?genre_contains=Fantasy&sort_by=-imdb_score%2C-votes&page_size=12' )
-setTimeout(() => {
-    fantasyMoviesHTML(categorieFantasyMovies)
-},700)
-
-movieRecuperationInfos(categorieScifiMovies,'?genre_contains=Sci-Fi&sort_by=-imdb_score%2C-votes&page_size=12' )
-setTimeout(() => {
-    scifiMoviesHTML(categorieScifiMovies)
-},700)
 
 
+const bestMovieButton = document.getElementById("best-movie--button");
+debugger
+bestMovieButton.addEventListener('click', function() {
+    document.querySelector("#headerModal").innerHTML = categorieBestMovies[0].title;
+})
