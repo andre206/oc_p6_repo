@@ -20,7 +20,11 @@ class Caroussel {
             loop: true
         }, options)
         let children = [].slice.call(element.children)
-        this.isMobile = false
+        if (window.innerWidth <800){
+            this.isMobile = true
+        }else{
+            this.isMobile = false
+        }
         this.currentItem = 0
         this.moveCallBacks = []
 
@@ -40,11 +44,14 @@ class Caroussel {
         this.createNavigation()
         // Evenement
         this.moveCallBacks.forEach(cb => cb(0))
-    }  
+        this.onWindowResize()
+        window.addEventListener('resize', this.onWindowResize.bind(this))
 
+    }  
     /**
      * Applique les bonnes dimensions aux éléments du caroussel
      */
+
     setStyle() {
         let ratio = this.items.length / this.slidesVisible
         this.container.style.width = (ratio*100) + '%'
@@ -107,6 +114,17 @@ class Caroussel {
         this.moveCallBacks.push(callBack)
     }
 
+    onWindowResize(){
+        
+        let mobile = window.innerWidth < 800;
+        if (mobile !== this.isMobile) {
+            this.isMobile = mobile
+            this.setStyle()
+            
+        this.moveCallBacks.forEach(cb => cb(this.currentItem))
+        }
+            
+    }
     /**
      * 
      * @param {strings} className 
@@ -134,24 +152,21 @@ class Caroussel {
 
 }
 
-
-document.addEventListener('DOMContentLoaded', function() {
     
-    new Caroussel(document.querySelector('#caroussel__best-movies'), {
-        slidesVisible: 4
-    }
-    );
-    new Caroussel(document.querySelector('#caroussel__action'), {
-        slidesVisible: 4
-    }
-    );
-    new Caroussel(document.querySelector('#caroussel__fantasy'), {
-        slidesVisible: 4
-    }
-    );
-    new Caroussel(document.querySelector('#caroussel__sci-fi'), {
-        slidesVisible: 4
-    }
-    );
-})
+new Caroussel(document.querySelector('#caroussel__best-movies'), {
+    slidesVisible: 4
+}
+);
+new Caroussel(document.querySelector('#caroussel__action'), {
+    slidesVisible: 4
+}
+);
+new Caroussel(document.querySelector('#caroussel__fantasy'), {
+    slidesVisible: 4
+}
+);
+new Caroussel(document.querySelector('#caroussel__sci-fi'), {
+    slidesVisible: 4
+}
+);
 
