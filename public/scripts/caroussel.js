@@ -17,7 +17,7 @@ class Caroussel {
         this.options = Object.assign({}, {
             slidesToScroll: 1,
             slidesVisible: 1,
-            loop: false
+            loop: true
         }, options)
         let children = [].slice.call(element.children)
         this.isMobile = false

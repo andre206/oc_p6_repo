@@ -6,6 +6,7 @@
 body{
     background-image: url(../../public/images/fond.jpg);
     color: $text-color;
+    font-size: x-large;
 
 }
 section{
@@ -24,12 +25,39 @@ section{
     &__titre{
         position:relative;
         height: 10%;
-        font-size: large;
+        font-size: x-large;
         font-family: 'ArimaKoshi';
+        text-align:center;
+        border: $border;
+        margin-bottom: 2%;
     }
 }
 .item{
     text-align: center;
     width: 300px;
-    height: 300px;
+    height: 350px;
+}
+
+.button{
+    text-align: center;
+    width: 50px;
+    height: 20px;
+    background: $background-gradient;
+    border-radius: 20% 10%;
+    border: 1px solid black;
+    box-shadow: grey 2px 2px;
+    margin-top: 2%;
+    transition: transform 0.3s, opacity 0.3s;
+    cursor: pointer;
+    color: $text-color;
+
+    &:hover{
+        transform: scale(1.2);        
+    }
+    & a{
+        color: $text-color;
+        &:hover{
+            color:lightcyan;
+        }
+    }
 }

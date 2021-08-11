@@ -1,8 +1,12 @@
 .caroussel {
     position: relative;
     overflow: hidden;
+    height:400px;
     &__item{
         float:left;
+        font-size: large;
+        font-style:italic;
+        font-size:x-large;
 
     }
     &__container{
