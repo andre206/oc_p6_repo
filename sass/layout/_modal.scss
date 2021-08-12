@@ -22,6 +22,10 @@
     display: table-cell;
     vertical-align: middle;
   }
+  &-content{
+    background: $background-gradient;
+    min-width: 450px;
+  }
   &-dialog &-content {
     margin: auto;
     position: relative;
@@ -29,64 +33,58 @@
     outline: 0;
     border: 1px #777 solid;
     text-align: justify;
-    width: 80%;
+    width: 70%;
     box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
-   
     animation-name: slideDownFadeIN;
     animation-duration: 0.5s;
   }
 }
 
-/* Bouton servant à fermer la fenêtre modale */
-
 .contain {
   padding: 2px 16px;
-  background: $background-gradient;
   display: flex;
+  vertical-align: top;
   & #modal-button{
     position:relative;
     margin-bottom: 5px;
-    left: 40%;
+    left: 45%;
   }
 }
-
-header {
-  background: $background-gradient;
-  font-size: 25px;
-  color: $text-color;
-  padding: 2% 2% 2% 2%;
-  & #headerModal{
+  
+#headerModal{
     
-    
-    &--text{
+  display: flex;
+  flex-direction: row;
+  &--text{
+    position: relative;
+    margin-top: 10px;
+    margin-right:5px;
+    max-height: 310px;
+    min-height: 310px;
+    overflow: scroll;
+    scrollbar-color: black grey;
+    scrollbar-width: thin;
+    border: 1px solid grey;
+    padding: 2px 2px 2px 2px ;
+    & h2{
       position: relative;
-      width: 100%;
-      margin-top: 10px;
-      & h2{
-        position: relative;
-        font-family: 'ArimaKoshi';
-        font-style: italic;
-      }
+      font-family: 'ArimaKoshi';
+      font-style: italic;
+      font-size:x-large;
     }
-    
-    &--img{
-      padding-top: 5%;
-      padding-bottom: 5%;
-      margin: 1% 1% 1% 1%;
-      display: flex;
-      float: right;
-    }
+  }
+  
+  &--img{
+    margin: 1% 1% 1% 1%;
+    width: 182px;
+    height: 268px;
   }
 }
 
-footer {
-  background: $background-gradient;
-  font-size: 20px;
-  color: $text-color;
-}
 #modal__contain{
   display: block;
   flex-direction: column;
+  margin: 1% 1% 1% 1%;
 
 }
 #contain__description{

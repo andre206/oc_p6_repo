@@ -1,17 +1,17 @@
 #best-movie{
     
     background: $background-gradient;
-    height: 300px;
-    width:95%;
+    height: 400px;
     padding: 10px 10px 10px 10px;
     display: inline-block;
     vertical-align: top;
+    flex-direction: row;
+    width: 89%;
     
     &__text{
         float: left;
         flex-direction: column;
         width: 65%;
-        height: 280px;
     }
     &__title{
         font-family: 'ArimaKoshi';
@@ -32,34 +32,14 @@
 
     &__img{
         float: right;
-        position: relative;
-        right:10%;
-        top: 5%;
+        width: 25%;
+        margin:3% 3% 3% 3%;
+        padding-left: 2%;
     }
 
     &--button{
-        text-align: center;
-        width: 20%;
-        height: 10%;
-        background: $background-gradient;
-        border-radius: 20% 10%;
-        border: 1px solid black;
-        box-shadow: grey 2px 2px;
         position: relative;
-        left:38%;
+        left:45%;
         top: 5%;
-        transition: transform 0.3s, opacity 0.3s;
-        cursor: pointer;
-        color: $text-color;
-        &:hover{
-            transform: scale(1.2);        
-        }
-        & a{
-            color: $text-color;
-            &:hover{
-                color:lightcyan;
-            }
-        }
-
     }
 }

@@ -1,33 +1,37 @@
+header {
+    background: $background-gradient;
+    font-size: 25px;
+    color: $text-color;
+    padding: 2% 2% 2% 2%;
+    margin: 5% 5% 5% 5%;
+}
+
 .header-main{
 
-    width: 95%;
     height: 100%;
     margin:2% 2% 2% 2%;
-    padding: 1% 1% 1% 1%;
     display: flex;
     flex-direction: row;
 
     border: $border;
     box-shadow: black 2px;
-    background: $background-gradient;
     opacity:90%;
-    
 }
 
-.float{
+#float{
     float: left;
 }
-.stop_float{
+#stop_float{
     float:none;
 }
 
 .slogan{
     display:flex;
     align-content:space-around;
-    align-items: flex-end;
     justify-content: center;
-    width: 70%;
-    height: 100px;
+    align-items: flex-end;
+    text-align: center;
+    width: 100%;
     font-family: 'ArimaKoshi';
     font-size: xx-large;
     font-style: italic;
@@ -35,7 +39,7 @@
 
 nav{
     
-    position:absolute;
+    position:relative;
     right: 2%;
     padding-right: 2%;
     

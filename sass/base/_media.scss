@@ -1,0 +1,61 @@
+@media screen and (max-width: 800px){
+
+    body{
+        font-size: large;
+    }
+    .section{
+        &__titre{
+            font-size: large;
+        }
+    }
+    .item{
+        position:relative;
+        align-items: center;
+        width: 100%;
+        height: 350px;
+    }
+
+    .slogan{
+        font-size:large;
+    }
+
+    #best-movie{
+
+        &__title{
+            font-size: 20px;
+            font-weight:normal;
+            text-align: center;
+        }
+    
+        &__description{
+            height: 200px;
+        }
+
+        &__img{
+            margin-left: 0;
+            padding-left: 0;
+            position:relative;
+            right: 80px;
+        }
+        &__text{
+            min-width: 200px;
+            width: 50%;
+        }
+
+    }
+    #float{
+        width:120px;
+        height:86px;
+    }
+
+    #headerModal{
+
+        &--text{
+          font-size:medium;
+          & h2{
+            font-size:large;
+          }
+        }
+    }
+        
+}

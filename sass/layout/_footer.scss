@@ -1,13 +1,9 @@
 #footer{
 
-    width: 95%;
     height: 100%;
-    margin:2% 2% 2% 2%;
-    padding: 1% 1% 1% 1%;
 
     border: $border;
     box-shadow: black 2px;
-    background: $background-gradient;
     opacity: 90%;
     text-align : center;
     & a{ 
@@ -17,3 +13,10 @@
         }
     }
 }
+footer {
+    background: $background-gradient;
+    font-size: 20px;
+    color: $text-color;
+    padding: 2% 2% 2% 2%;
+    margin: 5% 5% 5% 5%;
+  }

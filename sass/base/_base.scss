@@ -7,15 +7,15 @@ body{
     background-image: url(../../public/images/fond.jpg);
     color: $text-color;
     font-size: x-large;
+    min-width: 455px;
 
 }
 section{
     display: flex;
-    margin:2% 2% 2% 2%;
-    padding: 1% 1% 1% 1%;
+    padding: 2% 2% 2% 2%;
+    margin: 5% 5% 5% 5%;
     border: $border;
     box-shadow: black 2px;
-    width:95%;
     background: $background-gradient;
     opacity: 90%;
 }
@@ -40,8 +40,9 @@ section{
 
 .button{
     text-align: center;
+    font-size:large;
     width: 50px;
-    height: 20px;
+    height: 25px;
     background: $background-gradient;
     border-radius: 20% 10%;
     border: 1px solid black;
@@ -52,7 +53,8 @@ section{
     color: $text-color;
 
     &:hover{
-        transform: scale(1.2);        
+        transform: scale(1.2);  
+        color:lightcyan;      
     }
     & a{
         color: $text-color;
