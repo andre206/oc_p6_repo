@@ -1,6 +1,6 @@
 {
   "name": "juststreamit",
-  "version": "1.0.0",
+  "version": "1.1.0",
   "description": "Tu ne sais pas quoi regarder pour passer une bonne soirée ? Alors JustSteamIt",
   "main": "index.js",
   "scripts": {

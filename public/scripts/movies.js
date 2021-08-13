@@ -89,112 +89,35 @@ const bestMovieHTML = function(movieObject){
     document.querySelector("#best-movie__description").innerHTML = movieObject.description;
 }
 
-const bestMoviesHTML = function(listMovieObject){
+
+/**
+ * 
+ * @param {Movie} listMovieObject 
+ * @param {string} categorie 
+ */
+const movieHTML = function(listMovieObject, categorie) {
     listMovieObject.forEach((movie, index) =>{
         let img = document.createElement('img');
-        img.alt = "Best Movie Image "+(index+1);
+        img.alt = categorie + "movie image "+(index+1);
         img.src = movie.imageUrl;
-
-        document.querySelector("#best-movies__img"+(index+1)).appendChild(img);
-        document.querySelector("#best-movies__title"+(index+1)).innerHTML = movie.title
+        document.querySelector("#" + categorie + "__img"+(index+1)).appendChild(img);
+        document.querySelector("#" + categorie + "__title"+(index+1)).innerHTML = movie.title
         
-        document.getElementById("best-movies--button"+(index+1)).addEventListener('click', function() {
+        document.getElementById(categorie + "--button"+(index+1)).addEventListener('click', function() {
             document.querySelector("#headerModal--title").innerHTML = movie.title + " - Note : " +movie.imdb_score +
             " - Duration : "+movie.duration+" min";
             img = document.getElementById("headerModal--img");
             img.setAttribute('src', movie.imageUrl);
             document.querySelector("#headerModal__genre").innerHTML = "Genre(s) : "+movie.genres;
             document.querySelector("#headerModal__date").innerHTML = "Published date : "+movie.date_published;
-        document.querySelector("#headerModal__directors").innerHTML = "Realised by : "+movie.directors +" - Countries : "
+            document.querySelector("#headerModal__directors").innerHTML = "Realised by : "+movie.directors +" - Countries : "
             + movie.countries;
             document.querySelector("#headerModal__actors").innerHTML = "List of actors : "+movie.actors;
         
             document.querySelector("#contain__box-office").innerHTML = "Box Office Note : "+movie.avg_vote;
             document.querySelector("#contain__description").innerHTML = movie.description;
             document.querySelector("#contain__rated").innerHTML = "Rated : "+movie.rated;
-            document.getElementById("modal-button").href = "#best-movies";
-        })
-    })
-}
-const actionMoviesHTML = function(listMovieObject){
-    listMovieObject.forEach((movie, index) =>{
-        let img = document.createElement('img');
-        img.alt = "Action Movie Image "+(index+1);
-        img.src = movie.imageUrl;
-
-        document.querySelector("#action__img"+(index+1)).appendChild(img);
-        document.querySelector("#action__title"+(index+1)).innerHTML = movie.title
-       
-        document.getElementById("action--button"+(index+1)).addEventListener('click', function() {
-            document.querySelector("#headerModal--title").innerHTML = movie.title + " - Note : " +movie.imdb_score +
-            " - Duration : "+movie.duration+" min";
-            img = document.getElementById("headerModal--img");
-            img.setAttribute('src', movie.imageUrl);
-            document.querySelector("#headerModal__genre").innerHTML = "Genre(s) : "+movie.genres;
-            document.querySelector("#headerModal__date").innerHTML = "Published date : "+movie.date_published;
-        document.querySelector("#headerModal__directors").innerHTML = "Realised by : "+movie.directors +" - Countries : "
-            + movie.countries;
-            document.querySelector("#headerModal__actors").innerHTML = "List of actors : "+movie.actors;
-        
-            document.querySelector("#contain__box-office").innerHTML = "Box Office Note : "+movie.avg_vote;
-            document.querySelector("#contain__description").innerHTML = movie.description;
-            document.querySelector("#contain__rated").innerHTML = "Rated : "+movie.rated;
-            document.getElementById("modal-button").href = "#action";
-        })
-    })
-}
-const fantasyMoviesHTML = function(listMovieObject){
-    listMovieObject.forEach((movie, index) =>{
-        let img = document.createElement('img');
-        img.alt = "Fantasy Movie Image "+(index+1);
-        img.src = movie.imageUrl;
-
-        document.querySelector("#fantasy__img"+(index+1)).appendChild(img);
-        document.querySelector("#fantasy__title"+(index+1)).innerHTML = movie.title
-       
-        document.getElementById("fantasy--button"+(index+1)).addEventListener('click', function() {
-            document.querySelector("#headerModal--title").innerHTML = movie.title + " - Note : " +movie.imdb_score +
-            " - Duration : "+movie.duration+" min";
-            img = document.getElementById("headerModal--img");
-            img.setAttribute('src', movie.imageUrl);
-            document.querySelector("#headerModal__genre").innerHTML = "Genre(s) : "+movie.genres;
-            document.querySelector("#headerModal__date").innerHTML = "Published date : "+movie.date_published;
-        document.querySelector("#headerModal__directors").innerHTML = "Realised by : "+movie.directors +" - Countries : "
-            + movie.countries;
-            document.querySelector("#headerModal__actors").innerHTML = "List of actors : "+movie.actors;
-        
-            document.querySelector("#contain__box-office").innerHTML = "Box Office Note : "+movie.avg_vote;
-            document.querySelector("#contain__description").innerHTML = movie.description;
-            document.querySelector("#contain__rated").innerHTML = "Rated : "+movie.rated;
-            document.getElementById("modal-button").href = "#fantasy";
-        })
-    })
-}
-const scifiMoviesHTML = function(listMovieObject){
-    listMovieObject.forEach((movie, index) =>{
-        let img = document.createElement('img');
-        img.alt = "Sci-Fi Movie Image "+(index+1);
-        img.src = movie.imageUrl;
-
-        document.querySelector("#sci-fi__img"+(index+1)).appendChild(img);
-        document.querySelector("#sci-fi__title"+(index+1)).innerHTML = movie.title
-        //<img src="" alt="Best Movie 1"width=60% height=60%/>
-
-        document.getElementById("sci-fi--button"+(index+1)).addEventListener('click', function() {
-            document.querySelector("#headerModal--title").innerHTML = movie.title + " - Note : " +movie.imdb_score +
-            " - Duration : "+movie.duration+" min";
-            img = document.getElementById("headerModal--img");
-            img.setAttribute('src', movie.imageUrl);
-            document.querySelector("#headerModal__genre").innerHTML = "Genre(s) : "+movie.genres;
-            document.querySelector("#headerModal__date").innerHTML = "Published date : "+movie.date_published;
-        document.querySelector("#headerModal__directors").innerHTML = "Realised by : "+movie.directors +" - Countries : "
-            + movie.countries;
-            document.querySelector("#headerModal__actors").innerHTML = "List of actors : "+movie.actors;
-        
-            document.querySelector("#contain__box-office").innerHTML = "Box Office Note : "+movie.avg_vote;
-            document.querySelector("#contain__description").innerHTML = movie.description;
-            document.querySelector("#contain__rated").innerHTML = "Rated : "+movie.rated;
-            document.getElementById("modal-button").href = "#sci-fi";
+            document.getElementById("modal-button").href = "#" + categorie;
         })
     })
 }
@@ -308,10 +231,10 @@ movieRecuperationInfos(categorieScifiMovies,'?genre_contains=Sci-Fi&sort_by=-imd
 
 setTimeout(() => {
     bestMovieHTML(categorieBestMovies[0]);
-    bestMoviesHTML(categorieBestMovies);
-    actionMoviesHTML(categorieActionMovies);
-    fantasyMoviesHTML(categorieFantasyMovies);
-    scifiMoviesHTML(categorieScifiMovies)
+    movieHTML(categorieBestMovies, "best-movies");
+    movieHTML(categorieActionMovies, "action");
+    movieHTML(categorieFantasyMovies, "fantasy");
+    movieHTML(categorieScifiMovies, "sci-fi")
 },1100);
 
 const bestMovieButton = document.getElementById("best-movie--button");
