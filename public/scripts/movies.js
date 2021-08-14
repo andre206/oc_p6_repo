@@ -143,7 +143,7 @@ const modalWindowFilling = function(movie){
  */
 const listMoviesObject = function() {
     let movies = new Array;
-    for(let i=0; i<8; i++){
+    for(let i=0; i<7; i++){
         movies.push(new Movie(i));
     }
     return movies
@@ -156,10 +156,10 @@ let categorieFantasyMovies = listMoviesObject();
 let categorieScifiMovies = listMoviesObject();
 
 // Recuperation of movies informations by GET to the API
-movieRecuperationInfos(categorieBestMovies, '?sort_by=-imdb_score%2C-votes&page_size=8');
-movieRecuperationInfos(categorieActionMovies, '?genre_contains=Action&sort_by=-imdb_score%2C-votes&page_size=8');
-movieRecuperationInfos(categorieFantasyMovies,'?genre_contains=Fantasy&sort_by=-imdb_score%2C-votes&page_size=8' );
-movieRecuperationInfos(categorieScifiMovies,'?genre_contains=Sci-Fi&sort_by=-imdb_score%2C-votes&page_size=8' )
+movieRecuperationInfos(categorieBestMovies, '?sort_by=-imdb_score%2C-votes&page_size=7');
+movieRecuperationInfos(categorieActionMovies, '?genre_contains=Action&sort_by=-imdb_score%2C-votes&page_size=7');
+movieRecuperationInfos(categorieFantasyMovies,'?genre_contains=Fantasy&sort_by=-imdb_score%2C-votes&page_size=7' );
+movieRecuperationInfos(categorieScifiMovies,'?genre_contains=Sci-Fi&sort_by=-imdb_score%2C-votes&page_size=7' )
 
 // Completion of information on the website
 setTimeout(() => {
