@@ -1,9 +1,9 @@
 # oc_p6_repo
-***
+
 *_For P6 project of Openclassroom python developper training_*
-***
+
 ![JustSStreamIt!](https://github.com/maticha84/oc_p6_repo/blob/master/public/images/logo-juststreamit-petit.svg)
-***
+
 ## Project objective : 
 ***
 Develop a website that will allow subscribers to view interesting films in real time.
@@ -24,11 +24,11 @@ follow the instructions provided in the
 
 Then, you have to :
 
-1. Run the API serveur
-2. Clone this repository using Clone this repository using 
+>1. Run the API serveur
+>2. Clone this repository using Clone this repository using 
 `$ git clone https://github.com/maticha84/oc_p6_repo.git`
 (you can also download the code using as a zip file)
-3. On the root folder, run the index.html file
+>3. On the root folder, run the index.html file
 
 ### Complementary informations 
 ***
