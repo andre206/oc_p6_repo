@@ -48,16 +48,20 @@ class Caroussel {
         window.addEventListener('resize', this.onWindowResize.bind(this))
 
     }  
-    /**
-     * Applique les bonnes dimensions aux éléments du caroussel
-     */
 
+    /**
+     * Apply the correct dimensions to the carousel elements
+     */
     setStyle() {
         let ratio = this.items.length / this.slidesVisible
         this.container.style.width = (ratio*100) + '%'
         this.items.forEach(item => item.style.width =(100 / this.slidesVisible)/ratio + '%')
     }
 
+    /**
+     * Create navigation arrow for carroussel
+     * @returns if loop === true, leaves the arrows in place all the time, even at the beginning and end of the carousel
+     */
     createNavigation() {
         let nextButton = this.createDivWithClass('caroussel__next')
         let prevButton = this.createDivWithClass('caroussel__prev')
@@ -82,18 +86,24 @@ class Caroussel {
         })
     }
 
+    /**
+     * Go to go to the next element taking account of the number of slides to scroll
+     */
     next() {
         this.gotoItem(this.currentItem + this.slidesToScroll)
     }
 
+    /**
+     * go to the previous element taking account of the number of slides to scroll
+     */
     prev () {
         this.gotoItem(this.currentItem - this.slidesToScroll)
     }
+
     /**
-     * Déplace le caroussel vers l'élément ciblé
+     * Moves the carousel to the target element
      * @param {number} index 
      */
-
     gotoItem (index) {
         if(index < 0){
             index = this.items.length - this.slidesVisible
@@ -114,6 +124,9 @@ class Caroussel {
         this.moveCallBacks.push(callBack)
     }
 
+    /**
+     * to take account of responsive
+     */
     onWindowResize(){
         
         let mobile = window.innerWidth < 800;
@@ -123,8 +136,8 @@ class Caroussel {
             
         this.moveCallBacks.forEach(cb => cb(this.currentItem))
         }
-            
     }
+
     /**
      * 
      * @param {strings} className 
@@ -142,31 +155,24 @@ class Caroussel {
     get slidesToScroll() {
         return this.isMobile ? 1 : this.options.slidesToScroll
     }
-        /**
+
+    /**
      * @returns {number}
      */
     get slidesVisible() {
         return this.isMobile ? 1 : this.options.slidesVisible
     }
-
-
 }
 
-    
 new Caroussel(document.querySelector('#caroussel__best-movies'), {
-    slidesVisible: 4
-}
-);
+    slidesVisible: 4,
+});
 new Caroussel(document.querySelector('#caroussel__action'), {
-    slidesVisible: 4
-}
-);
+    slidesVisible: 4,
+});
 new Caroussel(document.querySelector('#caroussel__fantasy'), {
-    slidesVisible: 4
-}
-);
+    slidesVisible: 4,
+});
 new Caroussel(document.querySelector('#caroussel__sci-fi'), {
-    slidesVisible: 4
-}
-);
-
+    slidesVisible: 4,
+});

@@ -1,11 +1,10 @@
 class Movie {
     /**
      * 
-     * @param {string} url URL de l'API : http://localhost:8000/api/v1/titles/
+     * @param {string} url API url. By default : http://localhost:8000/api/v1/titles/
      * @param {number} index Index du résultat qui nous intéresse (de 0 à 6 pour les 7 premiers films)
      */
-
-    constructor(url, index){
+    constructor(index,url='http://localhost:8000/api/v1/titles/'){
         this.url = url;
         this.index = index;
         
@@ -26,13 +25,12 @@ class Movie {
     }
 }
 
-
 /**
  * 
  * @param {Array} listMovieObject list of mouvie objects
- * @param {string} categoriesSearch reserch for the GET API - just page_size=12 by default
+ * @param {string} categoriesSearch reserch for the GET API - just page_size=8 by default
  */
-const movieRecuperationInfos = async function(listMovieObject, categoriesSearch='?page_size=12') {
+const movieRecuperationInfos = async function(listMovieObject, categoriesSearch='?page_size=8') {
     await fetch(listMovieObject[0].url+categoriesSearch)
     .then(async function(res) {
         if (res.ok) {
@@ -76,181 +74,98 @@ const movieRecuperationInfos = async function(listMovieObject, categoriesSearch=
     })
 }
 
-
-const bestMovieHTML = function(movieObject){
-    let bestMovieImg = document.createElement('img');
-    bestMovieImg.alt = 'Best Movie Image';
-    bestMovieImg.src = movieObject.imageUrl;
-    let bestMovieImgDiv = document.createElement('div');
-    bestMovieImgDiv.setAttribute('id', 'best-movie__img');
-    document.querySelector("#best-movie").appendChild(bestMovieImgDiv);
-    document.querySelector("#best-movie__img").appendChild(bestMovieImg);
-    document.querySelector("#best-movie__title").innerHTML = movieObject.title
-    document.querySelector("#best-movie__description").innerHTML = movieObject.description;
-}
-
-
 /**
  * 
- * @param {Movie} listMovieObject 
+ * @param {Array} listMovieObject List of movie object
  * @param {string} categorie 
  */
 const movieHTML = function(listMovieObject, categorie) {
-    listMovieObject.forEach((movie, index) =>{
-        let img = document.createElement('img');
-        img.alt = categorie + "movie image "+(index+1);
-        img.src = movie.imageUrl;
-        document.querySelector("#" + categorie + "__img"+(index+1)).appendChild(img);
-        document.querySelector("#" + categorie + "__title"+(index+1)).innerHTML = movie.title
-        
-        document.getElementById(categorie + "--button"+(index+1)).addEventListener('click', function() {
-            document.querySelector("#headerModal--title").innerHTML = movie.title + " - Note : " +movie.imdb_score +
-            " - Duration : "+movie.duration+" min";
-            img = document.getElementById("headerModal--img");
-            img.setAttribute('src', movie.imageUrl);
-            document.querySelector("#headerModal__genre").innerHTML = "Genre(s) : "+movie.genres;
-            document.querySelector("#headerModal__date").innerHTML = "Published date : "+movie.date_published;
-            document.querySelector("#headerModal__directors").innerHTML = "Realised by : "+movie.directors +" - Countries : "
-            + movie.countries;
-            document.querySelector("#headerModal__actors").innerHTML = "List of actors : "+movie.actors;
-        
-            document.querySelector("#contain__box-office").innerHTML = "Box Office Note : "+movie.avg_vote;
-            document.querySelector("#contain__description").innerHTML = movie.description;
-            document.querySelector("#contain__rated").innerHTML = "Rated : "+movie.rated;
-            document.getElementById("modal-button").href = "#" + categorie;
+    if (categorie === "best-movie"){
+        let movie = listMovieObject[0]
+        let bestMovieImg = document.createElement('img');
+        bestMovieImg.alt = 'Best Movie Image';
+        bestMovieImg.src = movie.imageUrl;
+        let bestMovieImgDiv = document.createElement('div');
+        bestMovieImgDiv.setAttribute('id', 'best-movie__img');
+        document.querySelector("#best-movie").appendChild(bestMovieImgDiv);
+        document.querySelector("#best-movie__img").appendChild(bestMovieImg);
+        document.querySelector("#best-movie__title").innerHTML = movie.title
+        document.querySelector("#best-movie__description").innerHTML = movie.description;
+        document.getElementById(categorie + "--button").addEventListener('click', function(){
+            modalWindowFilling(movie)
+            document.getElementById("modal__button").addEventListener('click', function(){
+                document.getElementById("modal-button").href="#" + categorie;
+            })
         })
-    })
+    }else{
+        listMovieObject.forEach((movie, index) =>{
+            let img = document.createElement('img');
+            img.alt = categorie + "movie image "+(index+1);
+            img.src = movie.imageUrl;
+            document.querySelector("#" + categorie + "__img"+(index+1)).appendChild(img);
+            document.querySelector("#" + categorie + "__title"+(index+1)).innerHTML = movie.title
+            
+            document.getElementById(categorie + "--button"+(index+1)).addEventListener('click', function(){
+                modalWindowFilling(movie)
+                document.getElementById("modal__button").addEventListener('click', function(){
+                    document.getElementById("modal-button").href="#" + categorie;
+                })
+            })
+            
+            
+        })
+    }
 }
 
-const bestMoviesObject = function() {
-    let movies = new Array;
-    
-    let bestMovie1 = new Movie('http://localhost:8000/api/v1/titles/',0);
-    movies.push(bestMovie1);
-    let bestMovie2 = new Movie('http://localhost:8000/api/v1/titles/',1);
-    movies.push(bestMovie2);
-    let bestMovie3 = new Movie('http://localhost:8000/api/v1/titles/',2);
-    movies.push(bestMovie3);
-    let bestMovie4 = new Movie('http://localhost:8000/api/v1/titles/',3);
-    movies.push(bestMovie4);
-    let bestMovie5 = new Movie('http://localhost:8000/api/v1/titles/',4);
-    movies.push(bestMovie5);
-    let bestMovie6 = new Movie('http://localhost:8000/api/v1/titles/',5);
-    movies.push(bestMovie6);
-    let bestMovie7 = new Movie('http://localhost:8000/api/v1/titles/',6);
-    movies.push(bestMovie7);
-    let bestMovie8 = new Movie('http://localhost:8000/api/v1/titles/',7);
-    movies.push(bestMovie8);
+/**
+ * 
+ * @param {Movie} movie 
+ */
+const modalWindowFilling = function(movie){
+    document.querySelector("#headerModal--title").innerHTML = movie.title + " - Note : " +movie.imdb_score +
+    " - Duration : "+movie.duration+" min";
+    img = document.getElementById("headerModal--img");
+    img.setAttribute('src', movie.imageUrl);
+    document.querySelector("#headerModal__genre").innerHTML = "Genre(s) : "+movie.genres;
+    document.querySelector("#headerModal__date").innerHTML = "Published date : "+movie.date_published;
+    document.querySelector("#headerModal__directors").innerHTML = "Realised by : "+movie.directors +" - Countries : "
+    + movie.countries;
+    document.querySelector("#headerModal__actors").innerHTML = "List of actors : "+movie.actors;
 
+    document.querySelector("#contain__box-office").innerHTML = "Box Office Note : "+movie.avg_vote;
+    document.querySelector("#contain__description").innerHTML = movie.description;
+    document.querySelector("#contain__rated").innerHTML = "Rated : "+movie.rated;
+}
+
+/**
+ * 
+ * @returns {Array} list of movies object
+ */
+const listMoviesObject = function() {
+    let movies = new Array;
+    for(let i=0; i<8; i++){
+        movies.push(new Movie(i));
+    }
     return movies
 }
-const actionMoviesObject = function() {
-    let movies = new Array;
-    
-    let actionMovie1 = new Movie('http://localhost:8000/api/v1/titles/',0);
-    movies.push(actionMovie1);
-    let actionMovie2 = new Movie('http://localhost:8000/api/v1/titles/',1);
-    movies.push(actionMovie2);
-    let actionMovie3 = new Movie('http://localhost:8000/api/v1/titles/',2);
-    movies.push(actionMovie3);
-    let actionMovie4 = new Movie('http://localhost:8000/api/v1/titles/',3);
-    movies.push(actionMovie4);
-    let actionMovie5 = new Movie('http://localhost:8000/api/v1/titles/',4);
-    movies.push(actionMovie5);
-    let actionMovie6 = new Movie('http://localhost:8000/api/v1/titles/',5);
-    movies.push(actionMovie6);
-    let actionMovie7 = new Movie('http://localhost:8000/api/v1/titles/',6);
-    movies.push(actionMovie7);
-    let actionMovie8 = new Movie('http://localhost:8000/api/v1/titles/',7);
-    movies.push(actionMovie8);
 
-    return movies
-}
-const fantasyMoviesObject = function() {
-    let movies = new Array;
-    
-    let fantasyMovie1 = new Movie('http://localhost:8000/api/v1/titles/',0);
-    movies.push(fantasyMovie1);
-    let fantasyMovie2 = new Movie('http://localhost:8000/api/v1/titles/',1);
-    movies.push(fantasyMovie2);
-    let fantasyMovie3 = new Movie('http://localhost:8000/api/v1/titles/',2);
-    movies.push(fantasyMovie3);
-    let fantasyMovie4 = new Movie('http://localhost:8000/api/v1/titles/',3);
-    movies.push(fantasyMovie4);
-    let fantasyMovie5 = new Movie('http://localhost:8000/api/v1/titles/',4);
-    movies.push(fantasyMovie5);
-    let fantasyMovie6 = new Movie('http://localhost:8000/api/v1/titles/',5);
-    movies.push(fantasyMovie6);
-    let fantasyMovie7 = new Movie('http://localhost:8000/api/v1/titles/',6);
-    movies.push(fantasyMovie7);
-    let fantasyMovie8 = new Movie('http://localhost:8000/api/v1/titles/',7);
-    movies.push(fantasyMovie8);
+// Create Movies object in movie array by category
+let categorieBestMovies = listMoviesObject();
+let categorieActionMovies = listMoviesObject();
+let categorieFantasyMovies = listMoviesObject();
+let categorieScifiMovies = listMoviesObject();
 
-    return movies
-}
-const scifiMoviesObject = function() {
-    let movies = new Array;
-    
-    let scifiMovie1 = new Movie('http://localhost:8000/api/v1/titles/',0);
-    movies.push(scifiMovie1);
-    let scifiMovie2 = new Movie('http://localhost:8000/api/v1/titles/',1);
-    movies.push(scifiMovie2);
-    let scifiMovie3 = new Movie('http://localhost:8000/api/v1/titles/',2);
-    movies.push(scifiMovie3);
-    let scifiMovie4 = new Movie('http://localhost:8000/api/v1/titles/',3);
-    movies.push(scifiMovie4);
-    let scifiMovie5 = new Movie('http://localhost:8000/api/v1/titles/',4);
-    movies.push(scifiMovie5);
-    let scifiMovie6 = new Movie('http://localhost:8000/api/v1/titles/',5);
-    movies.push(scifiMovie6);
-    let scifiMovie7 = new Movie('http://localhost:8000/api/v1/titles/',6);
-    movies.push(scifiMovie7);
-    let scifiMovie8 = new Movie('http://localhost:8000/api/v1/titles/',7);
-    movies.push(scifiMovie8);
+// Recuperation of movies informations by GET to the API
+movieRecuperationInfos(categorieBestMovies, '?sort_by=-imdb_score%2C-votes&page_size=8');
+movieRecuperationInfos(categorieActionMovies, '?genre_contains=Action&sort_by=-imdb_score%2C-votes&page_size=8');
+movieRecuperationInfos(categorieFantasyMovies,'?genre_contains=Fantasy&sort_by=-imdb_score%2C-votes&page_size=8' );
+movieRecuperationInfos(categorieScifiMovies,'?genre_contains=Sci-Fi&sort_by=-imdb_score%2C-votes&page_size=8' )
 
-    return movies
-}
-   
-
-// Création des objects Mouvie dans des listes par catégorie
-let categorieBestMovies = bestMoviesObject();
-let categorieActionMovies = actionMoviesObject();
-let categorieFantasyMovies = fantasyMoviesObject();
-let categorieScifiMovies = scifiMoviesObject();
-
-
-// Récupération des infos et incrémentation des objets par catégorie
-
-
-
-movieRecuperationInfos(categorieBestMovies, '?sort_by=-imdb_score%2C-votes&page_size=12');
-movieRecuperationInfos(categorieActionMovies, '?genre_contains=Action&sort_by=-imdb_score%2C-votes&page_size=12');
-movieRecuperationInfos(categorieFantasyMovies,'?genre_contains=Fantasy&sort_by=-imdb_score%2C-votes&page_size=12' );
-movieRecuperationInfos(categorieScifiMovies,'?genre_contains=Sci-Fi&sort_by=-imdb_score%2C-votes&page_size=12' )
-
-
+// Completion of information on the website
 setTimeout(() => {
-    bestMovieHTML(categorieBestMovies[0]);
+    movieHTML(categorieBestMovies, "best-movie");
     movieHTML(categorieBestMovies, "best-movies");
     movieHTML(categorieActionMovies, "action");
     movieHTML(categorieFantasyMovies, "fantasy");
     movieHTML(categorieScifiMovies, "sci-fi")
 },1100);
-
-const bestMovieButton = document.getElementById("best-movie--button");
-
-bestMovieButton.addEventListener('click', function() {
-    document.querySelector("#headerModal--title").innerHTML = categorieBestMovies[0].title + " - Note : " +categorieBestMovies[0].imdb_score +
-    " - Duration : "+categorieBestMovies[0].duration+" min";
-    img = document.getElementById("headerModal--img");
-    img.setAttribute('src', categorieBestMovies[0].imageUrl);
-    document.querySelector("#headerModal__genre").innerHTML = "Genre(s) : "+categorieBestMovies[0].genres;
-    document.querySelector("#headerModal__date").innerHTML = "Published date : "+categorieBestMovies[0].date_published;
-    document.querySelector("#headerModal__directors").innerHTML = "Realised by : "+categorieBestMovies[0].directors +" - Countries : "
-    + categorieBestMovies[0].countries;
-    document.querySelector("#headerModal__actors").innerHTML = "List of actors : "+categorieBestMovies[0].actors;
-
-    document.querySelector("#contain__box-office").innerHTML = "Box Office Note : "+categorieBestMovies[0].avg_vote;
-    document.querySelector("#contain__description").innerHTML = categorieBestMovies[0].description;
-    document.querySelector("#contain__rated").innerHTML = "Rated : "+categorieBestMovies[0].rated;
-})
