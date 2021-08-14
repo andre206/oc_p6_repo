@@ -36,3 +36,20 @@ This website is optimised for launching via the Firefox browser.
 It also works with Chrome and Edge. The test was not done under Safari.
 
 As Internet Explorer is obsolete and due to disappear, we strongly advise against using it for this website.
+
+## Content folders
+***
+>Public > 
+* css : 
+style.css > for the style of the website
+
+* fonts > fonts add-on for the website
+
+* images > all images for the website structure (next and preview arrow, logo...)
+
+* scripts > 
+
+        1. caroussel.js > for the carousel work
+        2. movies.js > for information recuperation on the API
+
+>sass > all configuration style with sass development
