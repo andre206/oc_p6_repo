@@ -47,7 +47,7 @@ style.css > for the style of the website
 
 * images > all images for the website structure (next and preview arrow, logo...)
 
-* scripts > 
+* js > 
 
         1. caroussel.js > for the carousel work
         2. movies.js > for information recuperation on the API
