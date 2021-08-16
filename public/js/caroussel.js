@@ -164,15 +164,18 @@ class Caroussel {
     }
 }
 
-new Caroussel(document.querySelector('#caroussel__best-movies'), {
-    slidesVisible: 4,
-});
-new Caroussel(document.querySelector('#caroussel__action'), {
-    slidesVisible: 4,
-});
-new Caroussel(document.querySelector('#caroussel__fantasy'), {
-    slidesVisible: 4,
-});
-new Caroussel(document.querySelector('#caroussel__sci-fi'), {
-    slidesVisible: 4,
-});
+setTimeout(() => {
+    new Caroussel(document.querySelector('#caroussel__best-movies'), {
+        slidesVisible: 4,
+    });
+    new Caroussel(document.querySelector('#caroussel__action'), {
+        slidesVisible: 4,
+    });
+    new Caroussel(document.querySelector('#caroussel__fantasy'), {
+        slidesVisible: 4,
+    });
+    new Caroussel(document.querySelector('#caroussel__sci-fi'), {
+        slidesVisible: 4,
+    });
+},1200)
+

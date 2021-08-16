@@ -89,6 +89,7 @@ const movieHTML = function(listMovieObject, categorie) {
         bestMovieImgDiv.setAttribute('id', 'best-movie__img');
         document.querySelector("#best-movie").appendChild(bestMovieImgDiv);
         document.querySelector("#best-movie__img").appendChild(bestMovieImg);
+       
         document.querySelector("#best-movie__title").innerHTML = movie.title
         document.querySelector("#best-movie__description").innerHTML = movie.description;
         document.getElementById(categorie + "--button").addEventListener('click', function(){
@@ -99,6 +100,35 @@ const movieHTML = function(listMovieObject, categorie) {
         })
     }else{
         listMovieObject.forEach((movie, index) =>{
+            
+            let item = document.createElement('div');
+            item.setAttribute('id', categorie + '__item'+(index+1))
+            item.setAttribute('class', 'item')
+
+            document.querySelector('#caroussel__'+ categorie).appendChild(item);
+            
+            let divImg = document.createElement('div')
+            divImg.setAttribute('id', categorie+'__img'+(index+1))
+            let divTitle = document.createElement('div')
+            divTitle.setAttribute('id', categorie+'__title'+(index+1))
+            let divDescription = document.createElement('div')
+            divDescription.setAttribute('id', categorie+'__description'+(index+1))
+            
+            let buttonInfo = document.createElement('button')
+            buttonInfo.setAttribute('id',categorie+'--button'+(index+1))
+            buttonInfo.setAttribute('class', 'button')
+
+            let linkButton = document.createElement('a')
+            linkButton.textContent = "Infos"
+            linkButton.href = "#movie-informations"
+            
+            document.querySelector("#"+categorie+"__item"+(index+1)).appendChild(divImg)
+            document.querySelector("#"+categorie+"__item"+(index+1)).appendChild(divTitle)
+            document.querySelector("#"+categorie+"__item"+(index+1)).appendChild(divDescription)
+            document.querySelector("#"+categorie+"__item"+(index+1)).appendChild(buttonInfo)
+
+            document.querySelector("#"+categorie+'--button'+(index+1)).appendChild(linkButton)
+
             let img = document.createElement('img');
             img.alt = categorie + "movie image "+(index+1);
             img.src = movie.imageUrl;
@@ -111,8 +141,6 @@ const movieHTML = function(listMovieObject, categorie) {
                     document.getElementById("modal-button").href="#" + categorie;
                 })
             })
-            
-            
         })
     }
 }
@@ -149,11 +177,14 @@ const listMoviesObject = function() {
     return movies
 }
 
+//----------------------------------------------------
+
 // Create Movies object in movie array by category
 let categorieBestMovies = listMoviesObject();
 let categorieActionMovies = listMoviesObject();
 let categorieFantasyMovies = listMoviesObject();
 let categorieScifiMovies = listMoviesObject();
+
 
 // Recuperation of movies informations by GET to the API
 movieRecuperationInfos(categorieBestMovies, '?sort_by=-imdb_score%2C-votes&page_size=7');
